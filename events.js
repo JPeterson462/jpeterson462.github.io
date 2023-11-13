@@ -38,7 +38,7 @@ function logEvent(eventType, event) {
   var eventStringified = stringifyFullObject(event, true);
 
   var element = document.getElementById("events");
-  element.innerHTML = element.innerHTML + "<br />" + eventType + ": " + eventStringified;
+  element.innerHTML = element.innerHTML + "<br /><span style='font-weight: bold; color: red'>" + eventType + ":</span> " + eventStringified;
 }
 
 function bindToAllEvents(callback) {
