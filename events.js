@@ -43,10 +43,14 @@ function logEvent(eventType, event) {
 
 function bindToAllEvents(callback) {
   //var events = 'click dblclick mousedown mouseup mouseover mouseout mousemove mouseenter mouseleave keydown keyup keypress submit focus blur copy cut paste'.split(' ');
-  var events = 'click dblclick mousedown mouseup touchdown touchup'.split(' ');
+  var events = 'click dblclick mousedown mouseup touchstart touchend touchcancel'.split(' ');
   for (var i = 0; i < events.length; i++) {
     (function (eventType) {
       window.addEventListener(eventType, (e) => callback(eventType, e));
     })(events[i]);
   }
+}
+
+function waitForPageToLoad(callback) {
+  window.addEventListener('DOMContentLoaded', (event) => callback());
 }
