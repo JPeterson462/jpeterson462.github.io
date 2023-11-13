@@ -54,3 +54,8 @@ function bindToAllEvents(callback) {
 function waitForPageToLoad(callback) {
   window.addEventListener('DOMContentLoaded', (event) => callback());
 }
+
+function clearLog() {
+  var element = document.getElementById("events");
+  element.innerHTML = "";
+}
