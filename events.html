@@ -11,10 +11,19 @@
 
     <span id="events"></span>
 
-    <script type="text/javascript" src="events.js"></script>
+    <script type="module" src="objects.js"></script>
+    <script type="module" src="events.js"></script>
 
     <script type="text/javascript">
-      waitForPageToLoad(() => bindToAllEvents(logEvent));
+      function onEventTrackerLoaded(eventTracker) {
+        eventTracker.waitForPageToLoad(() => eventTracker.bindToAllEvents(eventTracker.logEvent));
+      }
+
+      if (window.eventTracker) {
+        onEventTrackerLoaded(window.eventTracker);
+      } else {
+        window.onEventTrackerLoaded = onEventTrackerLoaded;
+      }
     </script>
   </body>
 </html>
